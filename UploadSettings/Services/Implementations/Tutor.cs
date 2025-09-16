@@ -6,8 +6,4 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface Tutor : GenericService<TutorCreateDTO, TutorReadDTO, TutorCreateDTO>
-    {
-
-    }
 }

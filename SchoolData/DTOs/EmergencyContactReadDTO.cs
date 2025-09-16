@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolData.DTOs
 {
-    public class ClassCreateDTO : RegistryDTO
+    public class EmergencyContactReadDTO : RegistryDTO
     {
     }
 }

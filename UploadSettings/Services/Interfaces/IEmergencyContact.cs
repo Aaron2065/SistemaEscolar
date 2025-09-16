@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface EmergencyContact : GenericService<EmergencyContactCreateDTO, EmergencyContactReadDTO, EmergencyContactCreateDTO>
+    /*public interface EmergencyContact : GenericService<EmergencyContactCreateDTO, EmergencyContactReadDTO, EmergencyContactCreateDTO>
     {
 
-    }
+    }*/
 }
