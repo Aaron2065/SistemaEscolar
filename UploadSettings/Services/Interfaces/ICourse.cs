@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface ICourse : GenericService<CourseCreateDTO, CourseReadDTO, CourseCreateDTO>
+    public interface ICourse : IGenericService<CourseCreateDTO, CourseReadDTO, CourseCreateDTO>
     {
 
-    }*/
+    }
 }

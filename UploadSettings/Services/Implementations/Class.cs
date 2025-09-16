@@ -33,17 +33,27 @@ namespace SchoolService.Services.Implementations
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<ClassReadyDTO>> GetAllAsync()
+        public Task<IEnumerable<ClassReadDTO>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<ClassReadyDTO> GetByIdAsync(int id)
+        public Task<ClassReadDTO> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
         public Task UpdateAsync(int id, ClassCreateDTO dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<ClassReadDTO>> IGenericService<ClassCreateDTO, ClassReadDTO, ClassCreateDTO>.GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ClassReadDTO> IGenericService<ClassCreateDTO, ClassReadDTO, ClassCreateDTO>.GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
