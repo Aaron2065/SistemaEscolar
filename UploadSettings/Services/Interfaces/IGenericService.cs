@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface GenericService<TCreateDTO, TReadDTO, TUpdateDTO>
+    public interface IGenericService<TCreateDTO, TReadDTO, TUpdateDTO>
         where TCreateDTO : class
         where TReadDTO : class, new()
         where TUpdateDTO : class

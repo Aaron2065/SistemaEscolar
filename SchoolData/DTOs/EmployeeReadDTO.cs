@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SchoolData.DTOs
 {
-    public class ClassCreateDTO : RegistryDTO
+    public class EmployeeReadDTO
     {
+        public int IdEmployee { get; set; }
+        public string Name { get; set; }
+        public DateTime BornDate { get; set; }
     }
 }

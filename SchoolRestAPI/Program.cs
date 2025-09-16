@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolData;
+using SchoolService.Services.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
 #region
 var connection = builder.Configuration.GetConnectionString("DefaultConnection")

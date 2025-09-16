@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface Tutor : GenericService<TutorCreateDTO, TutorReadDTO, TutorCreateDTO>
-    {
+    public interface IEmployeeService : IGenericService<EmployeeCreateDTO, EmployeeReadDTO, EmployeeCreateDTO>
 
+    {
+        Task<IEnumerable<EmployeeReadDTO>> GetEmployeesWithTeachersAsync();
     }
+
 }

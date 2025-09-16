@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SchoolData.DTOs
 {
-    public class ClassReadyDTO : RegistryDTO
+    public class ClassReadDTO : RegistryDTO
     {
         public int IdClass { get; set; }
         [Required(ErrorMessage = "El nombre es requerido")]
