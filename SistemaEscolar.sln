@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaEscolar", "SistemaEscolar\SistemaEscolar.csproj", "{BA889C4A-9FB7-46F2-8708-680BBCEDD779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolData", "SchoolData\SchoolData.csproj", "{31EC0359-DF4A-488C-9103-47CF9BC90A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRestAPI", "SchoolRestAPI\SchoolRestAPI.csproj", "{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{BA889C4A-9FB7-46F2-8708-680BBCEDD779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA889C4A-9FB7-46F2-8708-680BBCEDD779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA889C4A-9FB7-46F2-8708-680BBCEDD779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31EC0359-DF4A-488C-9103-47CF9BC90A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31EC0359-DF4A-488C-9103-47CF9BC90A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31EC0359-DF4A-488C-9103-47CF9BC90A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31EC0359-DF4A-488C-9103-47CF9BC90A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
