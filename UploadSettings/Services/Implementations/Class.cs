@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using SchoolData;
+using SchoolService.Services.Implementations;
 using SchoolService.Settings;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Implementations
 {
-    public class Class
+    public class Class : IClass
     {
         //Inyectar el Servicio
         ApplicationDbContext _context;
