@@ -8,14 +8,6 @@ namespace SistemaEscolar.Models
         [Key]
         public int IdTeacher { get; set; }
 
-        [Required]
-        [MaxLength(100)]
-        public string Name {  get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public int Age { get; set; }
-
         /*Foreign Key*/
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }

@@ -8,5 +8,7 @@ namespace SchoolData.DTOs
 {
     public class PayTypeReadDTO : RegistryDTO
     {
+        public int IdPayType { get; set; }
+        public string Description { get; set; }
     }
 }

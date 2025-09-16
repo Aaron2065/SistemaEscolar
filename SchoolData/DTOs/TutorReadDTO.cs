@@ -8,5 +8,7 @@ namespace SchoolData.DTOs
 {
     public class TutorReadDTO : RegistryDTO
     {
+        public int IdTutor { get; set; }
+        public int IdEmployee { get; set; }
     }
 }

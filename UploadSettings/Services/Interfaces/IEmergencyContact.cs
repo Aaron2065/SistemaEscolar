@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface IEmergencyContact : GenericService<EmergencyContactCreateDTO, EmergencyContactReadDTO, EmergencyContactCreateDTO>
+    public interface IEmergencyContact : IGenericService<EmergencyContactCreateDTO, EmergencyContactReadDTO, EmergencyContactCreateDTO>
     {
 
     }

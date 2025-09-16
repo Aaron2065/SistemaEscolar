@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolData.DTOs
 {
-    public class EmployeeReadDTO
+    public class EmployeeReadDTO : RegistryDTO
     {
         public int IdEmployee { get; set; }
         public string Name { get; set; }

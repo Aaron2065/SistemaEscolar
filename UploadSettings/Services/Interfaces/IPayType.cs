@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface IPayType : GenericService<PayCreateDTO, PayReadDTO, PayCreateDTO>
+    public interface IPayType : IGenericService<PayTypeCreateDTO, PayTypeReadDTO, PayTypeCreateDTO>
     {
 
     }

@@ -10,5 +10,5 @@ namespace SchoolService.Services.Interfaces
     public interface ICourse : GenericService<CourseCreateDTO, CourseReadDTO, CourseCreateDTO>
     {
 
-    }
+    }*/
 }
