@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolData.DTOs
 {
-    public class ClassCreateDTO : RegistryDTO
+    public class CourseCreateDTO : RegistryDTO
     {
         public int IdCourse { get; set; }
         [Required]
