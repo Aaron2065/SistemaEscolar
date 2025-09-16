@@ -9,32 +9,48 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        #region
+        // Obtener cadena de conexión
+        var connection = builder.Configuration.GetConnectionString("DefaultConnection")
+                         ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found");
+
+        // Registrar DbContext con SQL Server y resiliencia
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseSqlServer(
-                builder.Configuration.GetConnectionString("sql_connection"),
-                x => x.MigrationsHistoryTable("_EFMigrationHistory", "Catalog"));
+                connection,
+                sqlOptions =>
+                {
+                    sqlOptions.MigrationsHistoryTable("_EFMigrationHistory", "Catalog"); // tabla de historial
+                    sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(10),
+                        errorNumbersToAdd: null
+                    ); // resiliencia
+                }
+            );
         });
-        #endregion
-        //Luego HealthChecks
+
+        // Registrar servicios
+        builder.Services.AddScoped<ICourseService, CourseService>();
+        builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+        // HealthChecks
         builder.Services.AddHealthChecks()
                .AddCheck("self", () => HealthCheckResult.Healthy())
                .AddDbContextCheck<ApplicationDbContext>();
 
-        // Add services to the container.
-
+        // Controllers y Swagger
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        #region Servicios de archivo de configuracion
-        builder.Services.Configure<SchoolService.Settings.UploadSettings>(builder.Configuration.GetSection("UploadSettings"));
-        #endregion
-
+        // Configuración de UploadSettings
+        builder.Services.Configure<SchoolService.Settings.UploadSettings>(
+            builder.Configuration.GetSection("UploadSettings")
+        );
 
         var app = builder.Build();
-        // Configure the HTTP request pipeline.
+
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -42,11 +58,8 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
-
         app.UseAuthorization();
-
         app.MapControllers();
-
         app.Run();
     }
 }

@@ -18,7 +18,7 @@ namespace SistemaEscolar.Models
 
         /*Foreign Key*/
         public int TeacherId { get; set; }
-        public Teacher Teachers { get; set; }
+        public Teacher Teacher { get; set; }
 
         public IEnumerable<StudentCourse> IdStudentCourse { get; set; }
 

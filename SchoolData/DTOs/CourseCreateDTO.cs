@@ -16,7 +16,5 @@ namespace SchoolData.DTOs
         public int IdClass { get; set; }
         [Required]
         public int TeacherId { get; set; }
-
-        public IEnumerable<StudentCourseReadDTO> IdStudentCourse { get; set; } = new List<StudentCourseReadDTO>();
     }
 }
