@@ -1,17 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using SchoolData;
-using SchoolService.Settings;
-
 var builder = WebApplication.CreateBuilder(args);
-
-//Configuración para usar SqlServer
-var connection = builder.Configuration.GetConnectionString
-    ("DefaultConnection") ?? throw new InvalidOperationException
-    ("Connection string 'DefaultConnection' not found");
-
-builder.Services.AddDbContext<ApplicationDbContext>(OptionsBuilderConfigurationExtensions =>
-    OptionsBuilderConfigurationExtensions.UseSqlServer(connection));
-
 
 // Add services to the container.
 
@@ -28,6 +15,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

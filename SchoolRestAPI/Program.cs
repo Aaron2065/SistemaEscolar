@@ -1,15 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolData;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region
-var connection = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found");
+var connection = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connection));
-#endregion
 
+
+#endregion
+var app = builder.Build();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -18,10 +22,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 #region Servicios de archivo de configuracion
-builder.Services.Configure<UploadSettings>(builder.Configuration.GetSection("UploadSettings"));
+builder.Services.Configure<SchoolService.Settings.UploadSettings>(builder.Configuration.GetSection("UploadSettings"));
 #endregion
 
-var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
