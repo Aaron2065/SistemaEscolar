@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaEscolar", "SistemaEs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolData", "SchoolData\SchoolData.csproj", "{31EC0359-DF4A-488C-9103-47CF9BC90A68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolRestAPI", "SchoolRestAPI\SchoolRestAPI.csproj", "{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{31EC0359-DF4A-488C-9103-47CF9BC90A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31EC0359-DF4A-488C-9103-47CF9BC90A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31EC0359-DF4A-488C-9103-47CF9BC90A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E61EDEF-8F09-4342-A2A7-63E75F8DF9CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

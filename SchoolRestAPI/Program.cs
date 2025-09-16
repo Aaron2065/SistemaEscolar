@@ -3,16 +3,11 @@ using SchoolData;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Configuración para usar SqlServer
-var connection = builder.Configuration.GetConnectionString
-    ("DefaultConnection") ?? throw new InvalidOperationException
-    ("Connection string 'DefaultConnection' not found");
-
-builder.Services.AddDbContext<ApplicationDbContext>(OptionsBuilderConfigurationExtensions =>
-    OptionsBuilderConfigurationExtensions.UseSqlServer(connection));
-
 #region
-builder.Services.Configure<UploadSettings>(builder.Configuration.GetSection("UploadSettings"));
+var connection = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connection));
 #endregion
 
 // Add services to the container.
@@ -22,6 +17,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region Servicios de archivo de configuracion
+builder.Services.Configure<UploadSettings>(builder.Configuration.GetSection("UploadSettings"));
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SchoolData.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaEscolar.Models
 {
-    public class Student
+    public class Student : Registry
     {
+        [Key]
         public int IdStudent { get; set; }
 
         [Required]
@@ -13,5 +15,11 @@ namespace SistemaEscolar.Models
         [Required]
         [MaxLength(100)]
         public int Age { get; set; }
+
+        public IEnumerable<StudentCourse> IdStudentCourse { get; set; }
+
+        public IEnumerable<EmergencyContact> IdContact { get; set; }
+
+        public IEnumerable<Pay> IdPay { get; set; }
     }
 }
