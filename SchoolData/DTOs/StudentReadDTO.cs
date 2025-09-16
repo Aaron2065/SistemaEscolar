@@ -8,5 +8,9 @@ namespace SchoolData.DTOs
 {
     public class StudentReadDTO : RegistryDTO
     {
+        public int IdStudent { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+
     }
 }
