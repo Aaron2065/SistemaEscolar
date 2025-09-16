@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using SchoolData;
 
 internal class Program
@@ -15,8 +16,11 @@ internal class Program
                 x => x.MigrationsHistoryTable("_EFMigrationHistory", "Catalog"));
         });
         #endregion
+        //Luego HealthChecks
+        builder.Services.AddHealthChecks()
+               .AddCheck("self", () => HealthCheckResult.Healthy())
+               .AddDbContextCheck<ApplicationDbContext>();
 
-        
         // Add services to the container.
 
         builder.Services.AddControllers();
