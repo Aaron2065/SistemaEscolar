@@ -10,9 +10,9 @@ namespace SchoolRestAPI.Controllers
 
     public class ClassController : ControllerBase
     {
-        private readonly IClass _Class;
+        private readonly IClassService _Class;
 
-        public ClassController(IClass Class)
+        public ClassController(IClassService Class)
         {
             _Class = Class;
         }
