@@ -10,5 +10,7 @@ namespace SchoolData.DTOs
     {
         public int IdTeacher { get; set; }
         public int IdEmployee { get; set; }
+
+        public string GroupDisplayName { get; set; } 
     }
 }

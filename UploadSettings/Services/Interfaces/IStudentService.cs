@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface IStudent : IGenericService<StudentCreateDTO, StudentReadDTO, StudentCreateDTO>
+    public interface IStudentService : IGenericService<StudentCreateDTO, StudentReadDTO, StudentCreateDTO>
     {
 
     }

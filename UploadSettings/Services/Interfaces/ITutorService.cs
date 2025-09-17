@@ -1,5 +1,4 @@
 ﻿using SchoolData.DTOs;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface ITeacher : IGenericService<TeacherCreateDTO, TeacherReadDTO, TeacherCreateDTO>
+    public interface ITutorService : IGenericService<TutorCreateDTO, TutorReadDTO, TutorCreateDTO>
     {
 
     }
