@@ -10,12 +10,19 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         #region
-        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+        builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+
+        /*builder.Services.AddDbContext<ApplicationDbContext>(options =>
         {
             options.UseSqlServer(
                 builder.Configuration.GetConnectionString("sql_connection"),
                 x => x.MigrationsHistoryTable("_EFMigrationHistory", "Catalog"));
-        });
+        });*/
+
+
         #endregion
         //Luego HealthChecks
         builder.Services.AddHealthChecks()

@@ -7,6 +7,7 @@ namespace SchoolData
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
+        public DbSet<StudentCourse> StudentCourses { get; set; }
         public DbSet<Class> Classes { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
@@ -15,7 +16,6 @@ namespace SchoolData
         public DbSet<Pay> Pays { get; set; }
         public DbSet<PayType> PayTypes { get; set; }
         public DbSet<Student> Students { get; set; }
-        public DbSet<StudentCourse> StudentCourses { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Tutor> Tutors { get; set; }
     }
