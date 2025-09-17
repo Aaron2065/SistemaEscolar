@@ -1,4 +1,6 @@
-﻿using SchoolData;
+﻿using Microsoft.EntityFrameworkCore;
+using SchoolData;
+using SchoolData.DTOs;
 using SchoolData.Models;
 using SchoolService.Services.Interfaces;
 using System;
@@ -20,13 +22,14 @@ namespace SchoolService.Services.Implementations
             _context = context;
         }
 
-        public async Task<IEnumerable<PayTypeReadDTO>> GetAllAsync()
+        public async Task<IEnumerable<StudentReadDTO>> GetAllAsync()
         {
-            return await _context.PayTypes
-                .Select(c => new PayTypeReadDTO
+            return await _context.Students
+                .Select(c => new StudentReadDTO
                 {
-                    IdPayType = c.IdPayType,
-                    Description = c.TypeDescription,
+                    IdStudent = c.IdStudent,
+                    Age = c.Age,
+                    Name = c.Name,
                     Active = c.IsActive,
                     HighSystem = c.HighSystem,
                     Deleted = c.IsDeleted
@@ -35,44 +38,44 @@ namespace SchoolService.Services.Implementations
         }
 
 
-        public async Task<PayTypeReadDTO> GetByIdAsync(int id)
+        public async Task<StudentReadDTO> GetByIdAsync(int id)
         {
-            var c = await _context.PayTypes
-                .FirstOrDefaultAsync(x => x.IdPayType == id);
+            var c = await _context.Students
+                .FirstOrDefaultAsync(x => x.IdStudent == id);
 
             if (c == null)
-                throw new KeyNotFoundException("Pago no encontrado");
+                throw new KeyNotFoundException("Estudiante no encontrado");
 
-            return new PayTypeReadDTO
+            return new StudentReadDTO
             {
-                IdPayType = c.IdPayType,
-                Description = c.TypeDescription,
+                IdStudent = c.IdStudent,
+                Name = c.Name,
+                Age = c.Age,
                 Active = c.IsActive,
                 HighSystem = c.HighSystem,
                 Deleted = c.IsDeleted
             };
         }
 
-        public async Task AddAsync(PayTypeCreateDTO dto)
+        public async Task AddAsync(StudentCreateDTO dto)
         {
-            var paytype = new PayType
+            var stud = new Student
             {
-                IdPayType = dto.IdPayType,
-                TypeDescription = dto.Description
-
+                Age = dto.Age,
+                Name = dto.Name
             };
 
-            await _context.PayTypes.AddAsync(paytype);
+            await _context.Students.AddAsync(stud);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(int id, PayTypeCreateDTO dto)
+        public async Task UpdateAsync(int id, StudentCreateDTO dto)
         {
-            var paytype = await _context.PayTypes.FindAsync(id);
-            if (paytype == null)
-                throw new KeyNotFoundException("Tipo de pago no encontrado");
+            var stud = await _context.Students.FindAsync(id);
+            if (stud == null)
+                throw new KeyNotFoundException("Estudiante no encontrado");
 
-            dto.Description = dto.Description;
+            dto.Age = dto.Age;
             dto.Active = dto.Active;
             dto.Deleted = dto.Deleted;
 
@@ -81,10 +84,10 @@ namespace SchoolService.Services.Implementations
 
         public async Task DeleteAsync(int id)
         {
-            var paytype = await _context.PayTypes.FindAsync(id);
-            if (paytype != null)
+            var stud = await _context.Students.FindAsync(id);
+            if (stud != null)
             {
-                _context.PayTypes.Remove(paytype);
+                _context.Students.Remove(stud);
                 await _context.SaveChangesAsync();
             }
         }
