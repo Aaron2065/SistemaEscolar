@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolData.DTOs
+namespace SchoolService.DTOs
 {
     public class CourseReadDTO : RegistryDTO
     {

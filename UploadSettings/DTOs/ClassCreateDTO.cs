@@ -1,19 +1,17 @@
-﻿using SchoolData.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolData.DTOs
+namespace SchoolService.DTOs
 {
-    public class ClassReadDTO : RegistryDTO
+    public class ClassCreateDTO : RegistryDTO
     {
         public int IdClass { get; set; }
-        [Required(ErrorMessage = "El nombre es requerido")]
         public string ClassName { get; set; }
         public int IdCurse { get; set; }
 
+        public IEnumerable<ClassReadDTO> IdCurses { get; set; } = new List<ClassReadDTO>();
     }
 }

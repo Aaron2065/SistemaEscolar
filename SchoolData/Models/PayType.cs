@@ -1,7 +1,6 @@
-﻿using SchoolData.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace SistemaEscolar.Models
+namespace SchoolData.Models
 {
     public class PayType : Registry
     {

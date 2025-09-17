@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolData;
 using SchoolData.DTOs;
-using SistemaEscolar.Models;
+using SchoolService.Services.Interfaces;
+using SchoolData.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolService.Services.Interfaces
+namespace SchoolService.Services.Implementations
 {
     public class CourseService : ICourseService
     {

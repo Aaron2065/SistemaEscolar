@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaEscolar.Models;
+using SchoolData.Models;
 
 namespace SchoolData
 {
