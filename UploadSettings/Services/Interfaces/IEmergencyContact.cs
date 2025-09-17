@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface IEmergencyContact : IGenericService<EmergencyContactCreateDTO, EmergencyContactReadDTO, EmergencyContactCreateDTO>
+    public interface IEmergencyContactService : IGenericService<EmergencyContactCreateDTO, EmergencyContactReadDTO, EmergencyContactCreateDTO>
     {
-
+        Task<IEnumerable<EmergencyContactReadDTO>> GetContactsWithStudentAsync();
     }
 }
