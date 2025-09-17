@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace SchoolRestAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/EmergencyContacts")]
     public class EmergencyContactsController : ControllerBase
     {
         private readonly IEmergencyContactService _contactService;

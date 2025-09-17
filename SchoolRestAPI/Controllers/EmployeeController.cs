@@ -6,7 +6,7 @@ using SchoolService.Services.Interfaces;
 namespace SchoolRestAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/Employee")]
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;

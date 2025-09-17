@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace SchoolRestAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/Group")]
     public class GroupsController : ControllerBase
     {
         private readonly IGroupService _groupService;

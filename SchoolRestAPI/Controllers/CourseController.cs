@@ -6,7 +6,7 @@ using SchoolService.Services.Interfaces;
 namespace SchoolRestAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/Courses")]
     public class CoursesController : ControllerBase
     {
         private readonly ICourseService _courseService;
