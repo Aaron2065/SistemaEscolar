@@ -3,11 +3,6 @@ using SchoolData;
 using SchoolData.DTOs;
 using SchoolService.Services.Interfaces;
 using SchoolData.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolService.Services.Implementations
 {

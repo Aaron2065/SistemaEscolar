@@ -8,7 +8,7 @@ namespace SchoolData
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<StudentCourse> StudentCourses { get; set; }
-        public DbSet<Class> Classes { get; set; }
+        public DbSet<Class> Class { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
         public DbSet<Employee> Employees { get; set; }

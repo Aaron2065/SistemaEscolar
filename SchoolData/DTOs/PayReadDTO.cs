@@ -14,5 +14,8 @@ namespace SchoolData.DTOs
         public DateTime InscriptionDate { get; set; }
         public decimal Amount { get; set; }
 
+        public string GroupPayType { get; set; } // Por ejemplo: "3-A"
+        public string GroupStudent { get; set; } // Por ejemplo: "3-A"
+
     }
 }
