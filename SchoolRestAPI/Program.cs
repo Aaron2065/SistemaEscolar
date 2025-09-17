@@ -11,30 +11,30 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Obtiene la cadena de conexión
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        if (string.IsNullOrEmpty(connectionString))
-        {
-            Console.WriteLine("[ERROR] No se encontró la cadena de conexión.");
-            throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-        }
-        else
-        {
-            Console.WriteLine($"[DEBUG] Cadena de conexión usada: {connectionString}");
-        }
+        /*var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        */
+        #region
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found");
 
-        // DbContext
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        {
-            options.UseSqlServer(connectionString,
-                x => x.MigrationsHistoryTable("_EFMigrationHistory", "Catalog"));
-        });
+            options.UseSqlServer(connectionString));
+        #endregion
+
+        builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
         // Registro de servicios
         builder.Services.AddScoped<ICourseService, CourseService>();
         builder.Services.AddScoped<IEmployeeService, EmployeeService>();
         builder.Services.AddScoped<IGroupService, GroupService>();
         builder.Services.AddScoped<IEmergencyContactService, EmergencyContactService>();
-
+        builder.Services.AddScoped<IPayTypeServices, PayTypeServices>();
+        builder.Services.AddScoped<IClassService, ClassService>();
+        builder.Services.AddScoped<IPayTypeServices,PayTypeServices>();
+        builder.Services.AddScoped<IStudentCourseService,StudentCourseService>();
+        builder.Services.AddScoped<IStudentService,StudentService>();
+        builder.Services.AddScoped<ITeacherService,TeacherService>();
+        builder.Services.AddScoped<ITutorService,TutorService>();
+        
         // HealthChecks
         builder.Services.AddHealthChecks()
                .AddCheck("self", () => HealthCheckResult.Healthy())

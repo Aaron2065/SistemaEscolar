@@ -5,6 +5,7 @@ namespace SchoolData.Models
     public class PayType : Registry
     {
         [Key]
+        [Required]
         public int IdPayType { get; set; }
 
         [Required]

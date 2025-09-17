@@ -28,7 +28,7 @@ namespace SchoolRestAPI.Controllers
         public async Task<IActionResult> Create(PayTypeCreateDTO dto)
         {
             await _PayTypeService.AddAsync(dto);
-            return Ok(new { message = "Pago creado correctamente" });
+            return Ok(new { message = "Tipo de Pago creado correctamente" });
         }
 
         [HttpPut("{id}")]
