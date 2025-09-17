@@ -11,5 +11,7 @@ namespace SchoolData.DTOs
         public bool Active { get; set; } = true;
 
         public DateTime HighSystem { get; set; } = DateTime.Now;
+
+        public bool Deleted { get; set; } = false;
     }
 }
