@@ -8,5 +8,8 @@ namespace SchoolService.DTOs
 {
     public class EmergencyContactReadDTO : RegistryDTO
     {
+        public int IdContact { get; set; }
+        public int IdStudent { get; set; }
+        public string StudentName { get; set; }
     }
 }
