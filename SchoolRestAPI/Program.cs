@@ -15,33 +15,24 @@ internal class Program
 
         builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 
-        /*builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        {
-            options.UseSqlServer(
-                builder.Configuration.GetConnectionString("sql_connection"),
-                x => x.MigrationsHistoryTable("_EFMigrationHistory", "Catalog"));
-        });*/
-
-
         #endregion
         //Luego HealthChecks
         builder.Services.AddHealthChecks()
                .AddCheck("self", () => HealthCheckResult.Healthy())
                .AddDbContextCheck<ApplicationDbContext>();
 
-        // Add services to the container.
-
+        // Controllers y Swagger
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        #region Servicios de archivo de configuracion
-        builder.Services.Configure<SchoolService.Settings.UploadSettings>(builder.Configuration.GetSection("UploadSettings"));
-        #endregion
-
+        // Configuración de UploadSettings
+        builder.Services.Configure<SchoolService.Settings.UploadSettings>(
+            builder.Configuration.GetSection("UploadSettings")
+        );
 
         var app = builder.Build();
-        // Configure the HTTP request pipeline.
+
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -49,11 +40,8 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
-
         app.UseAuthorization();
-
         app.MapControllers();
-
         app.Run();
     }
 }

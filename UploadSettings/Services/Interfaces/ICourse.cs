@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Services.Interfaces
 {
-    public interface ICourse : IGenericService<CourseCreateDTO, CourseReadDTO, CourseCreateDTO>
+    public interface ICourseService : IGenericService<CourseCreateDTO, CourseReadDTO, CourseCreateDTO>
     {
-
+        Task<IEnumerable<CourseReadDTO>> GetCoursesByGroupAsync(int groupId);
     }
 }

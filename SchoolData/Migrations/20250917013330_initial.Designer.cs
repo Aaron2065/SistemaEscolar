@@ -12,7 +12,7 @@ using SchoolData;
 namespace SchoolData.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250917001036_initial")]
+    [Migration("20250917013330_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -81,16 +81,11 @@ namespace SchoolData.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
                     b.HasKey("IdCourse");
 
                     b.HasIndex("ClassIdClass");
 
                     b.HasIndex("GroupIdGradeGroup");
-
-                    b.HasIndex("TeacherId");
 
                     b.ToTable("Courses");
                 });
@@ -203,7 +198,7 @@ namespace SchoolData.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPay"));
 
                     b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("HighSystem")
                         .HasColumnType("datetime2");
@@ -298,11 +293,11 @@ namespace SchoolData.Migrations
 
             modelBuilder.Entity("SistemaEscolar.Models.StudentCourse", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("IdStudentCourse")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdStudentCourse"));
 
                     b.Property<int>("CoursesIdCourse")
                         .HasColumnType("int");
@@ -325,7 +320,7 @@ namespace SchoolData.Migrations
                     b.Property<int>("StudentsIdStudent")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("IdStudentCourse");
 
                     b.HasIndex("CoursesIdCourse");
 
@@ -405,17 +400,9 @@ namespace SchoolData.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SistemaEscolar.Models.Teacher", "Teachers")
-                        .WithMany("IdCourse")
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Class");
 
                     b.Navigation("Group");
-
-                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.EmergencyContact", b =>
@@ -534,11 +521,6 @@ namespace SchoolData.Migrations
                     b.Navigation("IdPay");
 
                     b.Navigation("IdStudentCourse");
-                });
-
-            modelBuilder.Entity("SistemaEscolar.Models.Teacher", b =>
-                {
-                    b.Navigation("IdCourse");
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Tutor", b =>

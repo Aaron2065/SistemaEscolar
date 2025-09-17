@@ -12,6 +12,5 @@ namespace SistemaEscolar.Models
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
-        public IEnumerable<Course> IdCourse { get; set; }
     }
 }

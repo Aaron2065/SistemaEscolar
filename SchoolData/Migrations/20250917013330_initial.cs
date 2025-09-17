@@ -156,7 +156,7 @@ namespace SchoolData.Migrations
                     IdPayType = table.Column<int>(type: "int", nullable: false),
                     PayTypesIdPayType = table.Column<int>(type: "int", nullable: false),
                     InscriptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     HighSystem = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -213,7 +213,6 @@ namespace SchoolData.Migrations
                     GroupIdGradeGroup = table.Column<int>(type: "int", nullable: false),
                     IdClass = table.Column<int>(type: "int", nullable: false),
                     ClassIdClass = table.Column<int>(type: "int", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     HighSystem = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -233,19 +232,13 @@ namespace SchoolData.Migrations
                         principalTable: "Groups",
                         principalColumn: "IdGradeGroup",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Courses_Teachers_TeacherId",
-                        column: x => x.TeacherId,
-                        principalTable: "Teachers",
-                        principalColumn: "IdTeacher",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "StudentCourses",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    IdStudentCourse = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdStudent = table.Column<int>(type: "int", nullable: false),
                     StudentsIdStudent = table.Column<int>(type: "int", nullable: false),
@@ -257,7 +250,7 @@ namespace SchoolData.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentCourses", x => x.id);
+                    table.PrimaryKey("PK_StudentCourses", x => x.IdStudentCourse);
                     table.ForeignKey(
                         name: "FK_StudentCourses_Courses_CoursesIdCourse",
                         column: x => x.CoursesIdCourse,
@@ -281,11 +274,6 @@ namespace SchoolData.Migrations
                 name: "IX_Courses_GroupIdGradeGroup",
                 table: "Courses",
                 column: "GroupIdGradeGroup");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Courses_TeacherId",
-                table: "Courses",
-                column: "TeacherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmergencyContacts_StudentsIdStudent",
@@ -341,6 +329,9 @@ namespace SchoolData.Migrations
                 name: "StudentCourses");
 
             migrationBuilder.DropTable(
+                name: "Teachers");
+
+            migrationBuilder.DropTable(
                 name: "PayTypes");
 
             migrationBuilder.DropTable(
@@ -354,9 +345,6 @@ namespace SchoolData.Migrations
 
             migrationBuilder.DropTable(
                 name: "Groups");
-
-            migrationBuilder.DropTable(
-                name: "Teachers");
 
             migrationBuilder.DropTable(
                 name: "Tutors");
