@@ -16,8 +16,8 @@
 # Mono auto generated files
 mono_crash.*
 
-/.SchoolRestAPI/appsettings.Development
-/.SchoolRestAPI/appsettings
+appsettings.Development.json
+appsettings.json
 
 # Build results
 [Dd]ebug/
