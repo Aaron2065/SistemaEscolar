@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using SchoolData;
 using SchoolService.Services.Interfaces;
@@ -10,7 +10,7 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Obtiene la cadena de conexi�n
+        // Obtiene la cadena de conexión
         /*var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         */
         #region
@@ -45,13 +45,25 @@ internal class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        // Configuraci�n de UploadSettings
+        // Configuración de UploadSettings
         builder.Services.Configure<SchoolService.Settings.UploadSettings>(
             builder.Configuration.GetSection("UploadSettings"));
 
+        // 1️⃣ Registrar la política de CORS
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAngularApp", builder =>
+            {
+                builder
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+        });
+
         var app = builder.Build();
 
-        // Pipeline de la aplicaci�n
+        // Pipeline de la aplicación
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -59,6 +71,9 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
+
+        // Usar CORS
+        app.UseCors("AllowAngularApp");
 
         app.UseAuthorization();
 
