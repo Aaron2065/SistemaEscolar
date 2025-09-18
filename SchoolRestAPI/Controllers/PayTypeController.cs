@@ -24,7 +24,7 @@ namespace SchoolRestAPI.Controllers
         public async Task<IActionResult> GetById(int id) =>
             Ok(await _PayTypeService.GetByIdAsync(id));
 
-        [HttpPost]
+        [HttpPost("{id}")]
         public async Task<IActionResult> Create(PayTypeCreateDTO dto)
         {
             await _PayTypeService.AddAsync(dto);
