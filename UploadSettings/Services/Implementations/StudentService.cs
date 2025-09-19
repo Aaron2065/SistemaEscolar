@@ -141,7 +141,7 @@ namespace SchoolService.Services.Implementations
                 Deleted = c.IsDeleted
             };
         }
-
+          
         public async Task AddAsync(StudentCreateDTO dto)
         {
             
