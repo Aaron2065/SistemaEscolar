@@ -46,7 +46,7 @@ namespace SchoolData.Migrations
 
                     b.HasKey("IdClass");
 
-                    b.ToTable("Classes");
+                    b.ToTable("Classes", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Course", b =>
@@ -84,7 +84,7 @@ namespace SchoolData.Migrations
 
                     b.HasIndex("GroupIdGradeGroup");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.EmergencyContact", b =>
@@ -114,7 +114,7 @@ namespace SchoolData.Migrations
 
                     b.HasIndex("StudentsIdStudent");
 
-                    b.ToTable("EmergencyContacts");
+                    b.ToTable("EmergencyContacts", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Employee", b =>
@@ -144,7 +144,7 @@ namespace SchoolData.Migrations
 
                     b.HasKey("IdEmployee");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Group", b =>
@@ -183,7 +183,7 @@ namespace SchoolData.Migrations
 
                     b.HasIndex("TutorIdTutor");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Groups", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Pay", b =>
@@ -227,7 +227,7 @@ namespace SchoolData.Migrations
 
                     b.HasIndex("StudentsIdStudent");
 
-                    b.ToTable("Pays");
+                    b.ToTable("Pays", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.PayType", b =>
@@ -254,7 +254,7 @@ namespace SchoolData.Migrations
 
                     b.HasKey("IdPayType");
 
-                    b.ToTable("PayTypes");
+                    b.ToTable("PayTypes", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Student", b =>
@@ -285,7 +285,7 @@ namespace SchoolData.Migrations
 
                     b.HasKey("IdStudent");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.StudentCourse", b =>
@@ -323,7 +323,7 @@ namespace SchoolData.Migrations
 
                     b.HasIndex("StudentsIdStudent");
 
-                    b.ToTable("StudentCourses");
+                    b.ToTable("StudentCourses", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Teacher", b =>
@@ -350,7 +350,7 @@ namespace SchoolData.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Tutor", b =>
@@ -380,7 +380,7 @@ namespace SchoolData.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Tutors");
+                    b.ToTable("Tutors", (string)null);
                 });
 
             modelBuilder.Entity("SistemaEscolar.Models.Course", b =>
