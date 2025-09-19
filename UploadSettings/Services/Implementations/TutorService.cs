@@ -42,6 +42,7 @@ namespace SchoolService.Services.Implementations
         public async Task<TutorReadDTO> GetByIdAsync(int id)
         {
             var c = await _context.Tutors
+                .Include(t => t.Employee)
                 .FirstOrDefaultAsync(x => x.IdTutor == id);
 
             if (c == null)
@@ -60,24 +61,24 @@ namespace SchoolService.Services.Implementations
 
         public async Task AddAsync(TutorCreateDTO dto)
         {
-            var teacher = new Teacher
+            var tutor = new Tutor
             {
-                
+
                 EmployeeId = dto.IdEmployee
 
             };
 
-            await _context.Teachers.AddAsync(teacher);
+            await _context.Tutors.AddAsync(tutor);
             await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(int id, TutorCreateDTO dto)
         {
-            var teacher = await _context.Teachers.FindAsync(id);
-            if (teacher == null)
+            var tutor = await _context.Tutors.FindAsync(id);
+            if (tutor == null)
                 throw new KeyNotFoundException("Tutor no encontrado");
 
-            teacher.EmployeeId = dto.IdEmployee;
+            tutor.EmployeeId = dto.IdEmployee;
             dto.Active = dto.Active;
             dto.Deleted = dto.Deleted;
 
@@ -86,10 +87,10 @@ namespace SchoolService.Services.Implementations
 
         public async Task DeleteAsync(int id)
         {
-            var paytype = await _context.Teachers.FindAsync(id);
+            var paytype = await _context.Tutors.FindAsync(id);
             if (paytype != null)
             {
-                _context.Teachers.Remove(paytype);
+                _context.Tutors.Remove(paytype);
                 await _context.SaveChangesAsync();
             }
         }
