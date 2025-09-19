@@ -43,6 +43,7 @@ namespace SchoolService.Services.Implementations
         public async Task<TeacherReadDTO> GetByIdAsync(int id)
         {
             var c = await _context.Teachers
+                .Include(t => t.Employee)
                 .FirstOrDefaultAsync(x => x.IdTeacher == id);
 
             if (c == null)
@@ -51,7 +52,7 @@ namespace SchoolService.Services.Implementations
             return new TeacherReadDTO
             {
                 IdEmployee = c.EmployeeId,
-                GroupDisplayName = $"{c.EmployeeId} - {c.Employee.Name}",
+                GroupDisplayName = c.Employee.Name,
                 IdTeacher = c.IdTeacher,
                 Active = c.IsActive,
                 HighSystem = c.HighSystem,
