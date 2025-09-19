@@ -15,6 +15,8 @@ namespace SchoolData.Models
         [MaxLength(100)]
         public int Age { get; set; }
 
+        public string FotoUrl { get; set; }
+
         public IEnumerable<StudentCourse> IdStudentCourse { get; set; }
 
         public IEnumerable<EmergencyContact> IdContact { get; set; }

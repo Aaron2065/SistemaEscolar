@@ -9,6 +9,6 @@ namespace SchoolService.Services.Interfaces
 {
     public interface IStudentService : IGenericService<StudentCreateDTO, StudentReadDTO, StudentCreateDTO>
     {
-
+        Task<StudentReadDTO> AddAsync2(StudentCreateDTO dto);
     }
 }

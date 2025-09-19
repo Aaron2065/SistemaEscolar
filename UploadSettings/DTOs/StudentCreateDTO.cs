@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,6 +15,6 @@ namespace SchoolService.DTOs
         public string Name { get; set; }
         [Required(ErrorMessage = "La edad del estudiante es requerida")]
         public int Age { get; set; }
-
+        public IFormFile File { get; set; }
     }
 }

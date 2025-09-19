@@ -3,6 +3,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using SchoolData;
 using SchoolService.Services.Interfaces;
 using SchoolService.Services.Implementations;
+using Microsoft.Extensions.FileProviders;
 
 internal class Program
 {
@@ -31,7 +32,7 @@ internal class Program
         builder.Services.AddScoped<IClassService, ClassService>();
         builder.Services.AddScoped<IPayTypeServices,PayTypeServices>();
         builder.Services.AddScoped<IStudentCourseService,StudentCourseService>();
-        builder.Services.AddScoped<IStudentService,StudentService>();
+        builder.Services.AddScoped<IStudentService, StudentService>();
         builder.Services.AddScoped<ITeacherService,TeacherService>();
         builder.Services.AddScoped<ITutorService,TutorService>();
         
@@ -71,6 +72,15 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
+
+        app.UseStaticFiles(
+    new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(
+            Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
+        RequestPath = "/Uploads"
+    }
+    );
 
         // Usar CORS
         app.UseCors("AllowAngularApp");

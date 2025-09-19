@@ -15,7 +15,6 @@ namespace SchoolService.DTOs
 
         [Required(ErrorMessage = "El nombre es requerido")]
         public string ClassName { get; set; }
-        //public int IdCurse { get; set; }
 
     }
 }

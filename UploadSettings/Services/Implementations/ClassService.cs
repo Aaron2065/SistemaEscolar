@@ -70,7 +70,7 @@ namespace SchoolService.Services.Implementations
             if (classRom == null)
                 throw new KeyNotFoundException("Clase no encontrado");
 
-            classRom.IdClass = dto.IdClass;
+
             classRom.ClassName = dto.ClassName;
             classRom.IsDeleted = dto.Deleted;
             classRom.HighSystem = dto.HighSystem;

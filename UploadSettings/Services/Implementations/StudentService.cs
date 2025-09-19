@@ -1,10 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EcommerceREST.Web.Constants;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SchoolData;
-using SchoolService.DTOs;
 using SchoolData.Models;
+using SchoolService.DTOs;
 using SchoolService.Services.Interfaces;
+using SchoolService.Settings;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +22,17 @@ namespace SchoolService.Services.Implementations
     {
         //Inyectar el Servicio
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _env;
+        private readonly UploadSettings _uploadSettings;
         public StudentService(
-                ApplicationDbContext context
+                  ApplicationDbContext context
+                , IWebHostEnvironment env
+                , IOptions<UploadSettings> uploadSettingsOptions
             )
         {
             _context = context;
+            _env = env;
+            _uploadSettings = uploadSettingsOptions.Value;
         }
 
         public async Task<IEnumerable<StudentReadDTO>> GetAllAsync()
@@ -37,7 +50,76 @@ namespace SchoolService.Services.Implementations
                 .ToListAsync();
         }
 
+        [HttpPost]
+        [Consumes("multipart/form-data")]
+        public async Task<StudentReadDTO> AddAsync2(StudentCreateDTO studentCreateDTO)
+        {
+            var urlImagen = await UploadImage(studentCreateDTO.File);
 
+            var student = new Student
+            {
+                Name = studentCreateDTO.Name,
+                FotoUrl = urlImagen
+            };
+
+            await _context.Students.AddAsync(student);
+            await _context.SaveChangesAsync();
+
+            return new StudentReadDTO
+            {
+                IdStudent = student.IdStudent,
+                Name = student.Name,
+                Age= student.Age,
+                Active = student.IsActive,
+                Deleted = student.IsDeleted,
+                HighSystem = student.HighSystem
+            };
+        }
+
+        private async Task<string> UploadImage(IFormFile file)
+        {
+            ValidateFile(file);
+
+            string _customPath = Path.Combine(Directory.GetCurrentDirectory(), _uploadSettings.UploadDirectory);
+            //string _customPath = Path.Combine(_env.WebRootPath, _uploadSettings.UploadDirectory);
+
+            if (!Directory.Exists(_customPath))   // Crear el directorio si no existe
+            {
+                Directory.CreateDirectory(_customPath);
+            }
+
+            // Generar el nombre único del archivo
+            var fileName = Path.GetFileNameWithoutExtension(file.FileName)
+                            + Guid.NewGuid().ToString()
+                            + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(_customPath, fileName);
+
+            // Guardar el archivo
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            // Retornar la ruta relativa o completa, según sea necesario
+            return $"/{_uploadSettings.UploadDirectory}/{fileName}";
+        }
+
+        private void ValidateFile(IFormFile file)
+        {
+            var permittedExtensions = _uploadSettings.AllowedExtensions
+                                 .Split(',')
+                                 .Select(e => e.Trim().ToLowerInvariant())
+                                 .ToArray();
+
+            var extension = Path.GetExtension(file.FileName).ToLowerInvariant();
+            Console.WriteLine($"Archivo subido: {file.FileName}");
+            Console.WriteLine($"Extensión detectada: {extension}");
+            Console.WriteLine($"Extensiones permitidas: {string.Join(", ", permittedExtensions)}");
+            if (!permittedExtensions.Contains(extension))
+            {
+                throw new NotSupportedException(Messages.Validation.UnSupportedFileType);
+            }
+        }
         public async Task<StudentReadDTO> GetByIdAsync(int id)
         {
             var c = await _context.Students
