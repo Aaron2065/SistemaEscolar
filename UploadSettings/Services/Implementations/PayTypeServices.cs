@@ -59,7 +59,7 @@ namespace SchoolService.Services.Implementations
         {
             var paytype = new PayType
             {
-                IdPayType = dto.IdPayType,
+                //IdPayType = dto.IdPayType,
                 TypeDescription = dto.Description
                 
             };

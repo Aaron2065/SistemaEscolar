@@ -9,7 +9,6 @@ namespace SchoolData.DTOs
 {
     public class PayTypeCreateDTO : RegistryDTO
     {
-        public int IdPayType { get; set; }
         [Required(ErrorMessage = "La descripcion del tipo de pago es requerida")]
         public string Description { get; set; }
     }
