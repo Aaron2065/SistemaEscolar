@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolData;
-using SchoolData.DTOs;
+
 using SchoolData.Models;
+using SchoolService.DTOs;
 using SchoolService.Services.Interfaces;
 using System.Collections.Generic;
 using System.Linq;

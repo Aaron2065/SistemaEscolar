@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SchoolData.DTOs;
+using SchoolService.DTOs;
 using SchoolService.Services.Interfaces;
 
 namespace SchoolRestAPI.Controllers

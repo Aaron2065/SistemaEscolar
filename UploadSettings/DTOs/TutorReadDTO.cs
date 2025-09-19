@@ -10,5 +10,6 @@ namespace SchoolService.DTOs
     {
         public int IdTutor { get; set; }
         public int IdEmployee { get; set; }
+        public string EmployeeDisplayName { get; set; }
     }
 }

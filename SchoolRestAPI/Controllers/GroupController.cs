@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolData.DTOs;
+using SchoolService.DTOs;
 using SchoolService.Services.Interfaces;
 using System.Threading.Tasks;
 

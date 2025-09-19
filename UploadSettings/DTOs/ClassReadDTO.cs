@@ -10,10 +10,12 @@ namespace SchoolService.DTOs
 {
     public class ClassReadDTO : RegistryDTO
     {
+
         public int IdClass { get; set; }
+
         [Required(ErrorMessage = "El nombre es requerido")]
         public string ClassName { get; set; }
-        public int IdCurse { get; set; }
+        //public int IdCurse { get; set; }
 
     }
 }

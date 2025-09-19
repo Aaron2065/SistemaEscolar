@@ -1,7 +1,7 @@
 ﻿using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 using SchoolData;
-using SchoolData.DTOs;
+using SchoolService.DTOs;
 using SchoolService.Services.Interfaces;
 using SchoolData.Models;
 using System;

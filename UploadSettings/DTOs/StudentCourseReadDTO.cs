@@ -10,5 +10,7 @@ namespace SchoolService.DTOs
     {
         public int IdStudent { get; set;}
         public int IdCourse { get; set;}
+
+        public string NameStudent { get; set;}
     }
 }

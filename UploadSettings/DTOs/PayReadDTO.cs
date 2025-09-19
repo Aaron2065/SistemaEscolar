@@ -11,6 +11,7 @@ namespace SchoolService.DTOs
         public int IdPay { get; set; }
         public int IdStudent { get; set; }
         public int IdPayType { get; set; }
+        public string GroupPayType { get; set; }
         public DateTime InscriptionDate { get; set; }
         public decimal Amount { get; set; }
 

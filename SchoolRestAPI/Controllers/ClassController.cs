@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Humanizer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SchoolData.DTOs;
+using SchoolService.DTOs;
+using SchoolService.Services.Implementations;
 using SchoolService.Services.Interfaces;
 
 namespace SchoolRestAPI.Controllers
@@ -40,21 +42,11 @@ namespace SchoolRestAPI.Controllers
 
         //Crear
         [HttpPost]
-        [Consumes("multipart/forma-data")]
-        public async Task<IActionResult> Create([FromForm] ClassCreateDTO createDTO)
+        //[Consumes("multipart/form-data")]
+        public async Task<IActionResult> Create(ClassCreateDTO dto)
         {
-            try
-            {
-                await _Class.AddAsync(createDTO);
-                return CreatedAtAction(
-                    nameof(GetById),
-                    new { id = createDTO.IdCurse }
-                    );
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { message = $"Hubo un error al crear la marca {ex.Message}" });
-            }
+            await _Class.AddAsync(dto);
+            return Ok(new { message = "Materia creada correctamente" });
         }
 
         //Actualizar

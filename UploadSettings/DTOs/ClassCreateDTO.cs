@@ -10,7 +10,7 @@ namespace SchoolService.DTOs
     {
         public int IdClass { get; set; }
         public string ClassName { get; set; }
-        public int IdCurse { get; set; }
+        //public int IdCurse { get; set; }
 
         public IEnumerable<ClassReadDTO> IdCurses { get; set; } = new List<ClassReadDTO>();
     }
