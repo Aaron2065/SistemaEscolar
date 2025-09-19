@@ -43,6 +43,7 @@ namespace SchoolService.Services.Implementations
                     IdStudent = c.IdStudent,
                     Age = c.Age,
                     Name = c.Name,
+                    FotoUrl = c.FotoUrl, 
                     Active = c.IsActive,
                     HighSystem = c.HighSystem,
                     Deleted = c.IsDeleted
@@ -59,6 +60,7 @@ namespace SchoolService.Services.Implementations
             var student = new Student
             {
                 Name = studentCreateDTO.Name,
+                Age = studentCreateDTO.Age,
                 FotoUrl = urlImagen
             };
 
@@ -131,6 +133,7 @@ namespace SchoolService.Services.Implementations
             return new StudentReadDTO
             {
                 IdStudent = c.IdStudent,
+                FotoUrl = c.FotoUrl,
                 Name = c.Name,
                 Age = c.Age,
                 Active = c.IsActive,
@@ -141,6 +144,8 @@ namespace SchoolService.Services.Implementations
 
         public async Task AddAsync(StudentCreateDTO dto)
         {
+            
+            /*
             var stud = new Student
             {
                 Age = dto.Age,
@@ -148,7 +153,7 @@ namespace SchoolService.Services.Implementations
             };
 
             await _context.Students.AddAsync(stud);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();*/
         }
 
         public async Task UpdateAsync(int id, StudentCreateDTO dto)

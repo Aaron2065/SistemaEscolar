@@ -49,13 +49,14 @@ namespace SchoolRestAPI.Controllers
                     nameof(GetById),
                     new {
 
-                        id = createdBrand.IdStudent
-                        //id = createdBrand.IdStudent,
-                        //name = createdBrand.Name,
-                        //active = createdBrand.Active,
-                        //deleted = createdBrand.Deleted,
-                        //high = createdBrand.HighSystem
-                        //age = createdBrand.Age
+                        //id = createdBrand.IdStudent
+                        id = createdBrand.IdStudent,
+                        name = createdBrand.Name,
+                        fotourl = createdBrand,
+                        active = createdBrand.Active,
+                        deleted = createdBrand.Deleted,
+                        high = createdBrand.HighSystem,
+                        age = createdBrand.Age
                     },
                     brandDTO);
 

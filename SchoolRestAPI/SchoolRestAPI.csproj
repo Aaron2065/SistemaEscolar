@@ -28,4 +28,8 @@
     <ProjectReference Include="..\UploadSettings\SchoolService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
+
 </Project>
