@@ -20,7 +20,7 @@ namespace SchoolService.Services.Implementations
 
         public async Task<IEnumerable<ClassReadDTO>> GetAllAsync()
         {
-            return await _context.Class
+            return await _context.Classes
                 .Select(c => new ClassReadDTO
                 {
                     IdClass = c.IdClass,
@@ -35,7 +35,7 @@ namespace SchoolService.Services.Implementations
 
         public async Task<ClassReadDTO> GetByIdAsync(int id)
         {
-            var c = await _context.Class
+            var c = await _context.Classes
                 .FirstOrDefaultAsync(x => x.IdClass == id);
 
             if (c == null)
@@ -59,13 +59,13 @@ namespace SchoolService.Services.Implementations
                 ClassName = dto.ClassName
             };
 
-            await _context.Class.AddAsync(classRoom);
+            await _context.Classes.AddAsync(classRoom);
             await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(int id, ClassCreateDTO dto)
         {
-            var classRom = await _context.Class.FindAsync(id);
+            var classRom = await _context.Classes.FindAsync(id);
             if (classRom == null)
                 throw new KeyNotFoundException("Clase no encontrado");
 
@@ -80,10 +80,10 @@ namespace SchoolService.Services.Implementations
 
         public async Task DeleteAsync(int id)
         {
-            var classRom = await _context.Class.FindAsync(id);
+            var classRom = await _context.Classes.FindAsync(id);
             if (classRom != null)
             {
-                _context.Class.Remove(classRom);
+                _context.Classes.Remove(classRom);
                 await _context.SaveChangesAsync();
             }
         }
